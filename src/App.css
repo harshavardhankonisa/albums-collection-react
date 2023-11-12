@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.btn{
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    margin: 2px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    background-color: black;
+}
+
+header .albumCollectionLogo{
+    color: white;
+    text-decoration: none;
+}
+
+main{
+    background-color: gray;
+}
+
+.albumResults{
+    display: flex;
+    justify-content: center;
+    align-self: start;
+    flex-wrap: wrap;
+    padding: 25px;
+}
+
+.albumCard{
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    border: 2px solid black;
+    margin: 5px;
+    background-color: white;
+}
+.albumTitle{
+    text-align: center;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.albumUserId{
+    text-align: left;
+    background-color: black;
+    height: 20px;
+    padding: 5px;
+    color: white;
+}
+
+.albumUserId span{
+    font-weight: bold;
+}
+
+.albumCardController{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.warning{
+    padding: 25px;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+}
+
+.addAlbumPop{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.addAlbumPop .container{
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    max-width: 400px;
+}
+
+.addAlbumPop .container label{
+    padding: 5px;
+}
+
+.addAlbumPop .container input{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 92%;
+}
+
+.addAlbumController{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+}
+
+label span{
+    font-weight: bolder;
+    color: red;
+    padding-left: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    word-wrap: break-word;
+    max-width: 100%;
+    padding: 5px;
+}
+
+

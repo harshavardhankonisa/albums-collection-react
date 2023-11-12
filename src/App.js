@@ -24,7 +24,11 @@ function App() {
   },([]));
 
   function displayWarning(warning){
-    return `<p>${warning}</p>`
+    return(
+      <div className='warning'>
+        <p>{warning}</p>
+      </div>
+    );
   }
 
   function addAlbumData() {
@@ -57,7 +61,7 @@ function App() {
       }, 3000);
     }else{
       setAddAlbum(false);
-      setWarning("Please check input correctly for adding Albums");
+      setWarning("Please check input correctly for adding album");
       setTimeout(function() {
         setWarning();
       }, 3000);
@@ -67,15 +71,16 @@ function App() {
 
   function displayAddAlbum(){
     return (
-      <div className='addAlbum'>
-        <div className='Container'>
-          <label htmlFor="addUserId"> USER ID: </label>
+      <div className='addAlbumPop'>
+        <div className='container'>
+          <label htmlFor="addUserId"> User ID: </label>
           <input type="text" name="userId" id="addUserId" placeholder='Numbers only allowed'/>
+          <br />
           <label htmlFor="addTitle"> Article Title: </label>
           <input type="text" name="title" id="addTitle" placeholder='Text only allowed'/>
           <div className='addAlbumController'>
-            <button onClick={()=>setAddAlbum(false)}>Close</button>
-            <button onClick={()=> addAlbumData()}>Add Album</button>
+            <button className='btn' onClick={()=>setAddAlbum(false)}>Close</button>
+            <button className='btn' onClick={()=> addAlbumData()}>Add Album</button>
           </div>
         </div>
       </div>
@@ -109,7 +114,7 @@ function App() {
       }, 3000);
     }else{
       setUpdateAlbum(false);
-      setWarning("Please check input correctly for updating Albums");
+      setWarning("Please check input correctly for updating album");
       setTimeout(function() {
         setWarning();
       }, 3000);
@@ -119,15 +124,16 @@ function App() {
   function displayUpdateAlbum(updateId){
     const albumToUpdate = albums.find(album => album.id === updateId);
     return(
-      <div className='updateAlbum'>
-        <div className='Container'>
-          <label htmlFor="updateUserId"> USER ID: `${albumToUpdate.userId}` </label>
+      <div className='addAlbumPop'>
+        <div className='container'>
+          <label htmlFor="updateUserId"> User ID: <span>{albumToUpdate.userId}</span> </label>
           <input type="text" name="userId" id="updateUserId" placeholder='Numbers only allowed'/>
-          <label htmlFor="updateTitle"> Article Title: `${albumToUpdate.userId}`</label>
+          <br />
+          <label htmlFor="updateTitle"> Article Title: <br /> <span>{albumToUpdate.title}</span></label>
           <input type="text" name="title" id="updateTitle" placeholder='Text only allowed'/>
           <div className='addAlbumController'>
-            <button onClick={()=>setUpdateAlbum(false)}>Close</button>
-            <button onClick={()=> updateAlbumData(updateId)}>Update Album</button>
+            <button className='btn' onClick={()=>setUpdateAlbum(false)}>Close</button>
+            <button className='btn' onClick={()=> updateAlbumData(updateId)}>Update Album</button>
           </div>
         </div>
       </div>
@@ -145,21 +151,21 @@ function App() {
   return (
     <div className="App">
       <header>
-        <a className='albumCollectionLogo' href="/">Harsha</a>
-        <button className='addAlbum' onClick={()=>{setAddAlbum(true)}} >Add Album</button>
+        <a className='albumCollectionLogo btn' href="/">Albums Home</a>
+        <button className='addAlbum btn' onClick={()=>{setAddAlbum(true)}} >Add Album</button>
       </header>
+      {warning && displayWarning(warning)}
+      {addAlbum && displayAddAlbum()}
+      {updateAlbum && displayUpdateAlbum(updateId)}
       <main>
-        {warning && displayWarning(warning)}
-        {addAlbum && displayAddAlbum()}
-        {updateAlbum && displayUpdateAlbum(updateId)}
         <div className='albumResults'>
           {albums.map(album => (
             <div className='albumCard' key={album.id}>
-              <p>{album.title}</p>
-              <p>{album.userId}</p>
+              <p className='albumTitle'>{album.title}</p>
+              <p className='albumUserId'>User ID: <span>{album.userId}</span></p>
               <div className='albumCardController'>
-                <button className='updateAlbum' onClick={()=>{setUpdateAlbum(true); setUpdateId(album.id)}} >Update Album</button>
-                <button className='deleteAlbum' onClick={()=>{deleteAlbum(album.id)}}>Delete Album</button>
+                <button className='updateAlbum btn' onClick={()=>{setUpdateAlbum(true); setUpdateId(album.id)}} >Update Album</button>
+                <button className='deleteAlbum btn' onClick={()=>{deleteAlbum(album.id)}}>Delete Album</button>
               </div>
             </div>
           ))}
